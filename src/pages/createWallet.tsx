@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Separator } from "@/components/ui/separator"
+import {  createWallets } from '@/lib/walletLogic';
 
 
 function WalletSetup() {
@@ -12,23 +13,31 @@ function WalletSetup() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [agreedToTerms, setAgreedToTerms] = useState(false)
-  const [recoveryPhrase] = useState(generateRecoveryPhrase())
+  const [recoveryPhrase,setRecoveryPhrase] = useState <string[]>([])
   const [showRecoveryPhrase, setShowRecoveryPhrase] = useState(false)
   const [savedRecoveryPhrase, setSavedRecoveryPhrase] = useState(false)
   const navigate = useNavigate();
-  function generateRecoveryPhrase() {
-    // This is a mock function. In a real app, use a secure method to generate the recovery phrase.
-    const words = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit', 'kiwi', 'lemon']
-    return words.sort(() => 0.5 - Math.random()).slice(0, 12)
+
+
+  async function  generateRecoveryPhrase() {
+    const data = await createWallets();
+
+    const words = data.men.split(' ');
+    setRecoveryPhrase(words);
   }
 
   function handleContinue() {
     if (currentStep === 1 && password === confirmPassword && password.length > 0 && agreedToTerms) {
+      generateRecoveryPhrase()
       setCurrentStep(2)
     } else if (currentStep === 2 && savedRecoveryPhrase) {
       setCurrentStep(3)
     }
      else if(currentStep === 3){
+      localStorage.setItem("mywallet",JSON.stringify({
+        "menomic": recoveryPhrase,
+        "password": password
+      }) )
        navigate('/wallet')
      }
 
