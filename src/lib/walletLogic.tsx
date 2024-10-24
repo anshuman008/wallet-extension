@@ -28,4 +28,22 @@ export  const createWallets = async() =>
   }
   }
 
+export const addNewWallet =  async(men:string) =>{
+   const seed =  await mnemonicToSeed(men);
+   const path = `m/44'/501'/0'/0'`;
+
+   const deriveseed =  derivePath(path,seed.toString('hex')).key;
+
+   const keypair = Keypair.fromSeed(deriveseed);
+   const publicKey = keypair.publicKey.toBase58();
+   const privateKey = bs58.encode(keypair.secretKey);
+
+   return{
+    "pubKey":publicKey,
+    "secretKey":privateKey
+   }
+
+
+}
+
 
