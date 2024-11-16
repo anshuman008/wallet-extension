@@ -2,7 +2,7 @@ import { AlertTriangle, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card } from "@/components/ui/card"
-
+import {CreateWallet} from "@/utils/WalletLogic"
 export default function WarningComp({setStep} :{setStep:React.Dispatch<React.SetStateAction<number>>
 }) {
   return (
@@ -49,7 +49,9 @@ export default function WarningComp({setStep} :{setStep:React.Dispatch<React.Set
           </div>
 
           <Button className="w-full bg-white text-black hover:bg-gray-200" size="lg" 
-           onClick={() => {setStep((prev) => prev+1)}}
+           onClick={() => {
+            CreateWallet();
+           }}
           >
             Next
           </Button>

@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { DiscIcon as Discord, Lock, Twitter } from 'lucide-react'
-import Link from "next/link"
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen  text-white flex flex-col items-center justify-center p-4">
       <div className="fixed top-4 right-4">
-        <Card className="bg-blue-600/20 border-none p-4">
-          <p className="text-sm">
+        <Card className="bg-blue-500 border-none p-4">
+          <p className="text-sm text-white">
             Pin the Backpack Extension
             <br />
             Click 🧩 and 📌
@@ -29,21 +28,21 @@ export default function Component() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2">
+            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2 cursor-pointer">
               <Lock className="h-6 w-6 text-red-400" />
               <span className="text-gray-400">Support</span>
             </Card>
           </div>
 
           <div >
-            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2">
+            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2 cursor-pointer">
               <Twitter className="h-6 w-6 text-gray-400" />
               <span className="text-gray-400">@Backpack</span>
             </Card>
           </div>
 
           <div>
-            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2">
+            <Card className="bg-zinc-900 border-none p-6 hover:bg-zinc-800 transition-colors flex flex-col items-center justify-center space-y-2 cursor-pointer">
               <Discord className="h-6 w-6 text-indigo-400" />
               <span className="text-gray-400">Discord</span>
             </Card>
