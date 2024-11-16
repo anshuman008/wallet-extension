@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "chmod +x ./script.sh && ./script.sh",
+    "build-main": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky"
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/chrome": "^0.0.279",
     "@types/node": "^22.7.5",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
@@ -52,7 +54,6 @@
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8"
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -62,5 +63,5 @@
     "*/.{ts,tsx,js,jsx,md,mdx,css}": [
       "prettier --write"
     ]
-  },
+  }
 }

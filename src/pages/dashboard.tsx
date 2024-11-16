@@ -8,7 +8,10 @@ function Dashboard() {
   useEffect(() => {
     const data = localStorage.getItem("mywallet");
 
-    if (data) {
+    if (!data) {
+      chrome.tabs.create({ url: 'contents.html' });
+    }
+    else{
       navigate("/check");
     }
   }, []);
